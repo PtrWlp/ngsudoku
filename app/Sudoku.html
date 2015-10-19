@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="sudokuApp">
+    <head>
+        <link rel="stylesheet" href="https://core.static-afkl.com/ams/frontend/css/core-en.css">
+        <link rel="stylesheet" href="/css/sudoku.css">
+    </head>
+
+    <body ng-cloak>
+
+        <div class="sudokugame sudokugamesize"
+             ng-controller="Sudoku"
+             tabindex="1"
+             ng-keydown="handleKeyStroke($event)">
+            <div class="sud_playfield">
+                <div class="sud_block"
+                     ng-repeat="cell in cells"
+                     ng-class="{sud_thicktop: cell.posInBlock == 'lu' || cell.posInBlock == 'mu' || cell.posInBlock == 'ru',
+                                sud_thickleft: cell.posInBlock == 'lu' || cell.posInBlock == 'lm' || cell.posInBlock == 'ld',
+                                sud_clearfix : $index % 9 == 0 }">
+                    <div class="sud_cell"
+                        ng-click="setActiveCell(cell)"
+                        ng-class="{'sud_cellprefilled': cell.isPrefilled,
+                                   sud_cellactive: cell.isActiveCell,
+                                   sud_cellhint: cell.isHint,
+                                   sud_cellwrongvalue : cell.isError,
+                                   sud_cellsolved: isGameSolved}">
+                        {{cell.value}}
+                    </div>
+                </div>
+            </div>
+
+            <ul class="sud_actions">
+                <li><a class="g-btn g-btn-toneddown " ng-click="randomFill()"><span>Random Fill</span></a></li>
+                <li><a class="g-btn g-btn-toneddown " ng-click="trySolve()"><span>Try to solve</span></a></li>
+                <li><a class="g-btn g-btn-toneddown " ng-click="solveOneStep()"><span>Solve Partly</span></a></li>
+                <li><a class="g-btn g-btn-toneddown " ng-click="giveHint()"><span>Hint</span></a></li>
+                <li><a class="g-btn g-btn-disabled "><span>Save</span></a>
+                    <a class="g-btn g-btn-disabled "><span>Load</span></a></li>
+            </ul>
+            <div class="sud_messages">{{messageLine}}</div>
+
+
+        </div>
+
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

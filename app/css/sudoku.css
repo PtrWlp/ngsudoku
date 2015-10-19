@@ -1,0 +1,178 @@
+/* Specific elements for the sudoku solving app. */
+/* Note, all application-specific classes need to be prefixed! (to do) */
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: verdana, arial, sans-serif;
+  margin-right: 0.5em;
+  margin: 0.5em;
+  margin-top: 0;
+}
+
+
+.sudokugame {
+	margin-left:20px;
+	padding: 20px;
+	border-style:solid;
+	border-width: 1px;
+	border-color: #8DC9E8;
+}
+@media screen and (min-width: 600px) {
+	/* If enough space, limit the box to just outside the buttons */
+	.sudokugame {
+		margin: 20px;
+		padding: 10px;
+		border-style:solid;
+		border-width: 1px;
+		border-color: #8DC9E8;
+		width:560px;
+	}
+}
+
+  /* All divs are pixelsized, based on a playcell square of 30px */
+  /* In the comment, we will call this value PlayCellSize, and all values are derived from this */
+  /* When altering size, keep px values relative to PlayCellSize */
+.sud_cellholdcandidates {
+	font-weight: bold;
+	font-size: 0.55em;
+	padding-top: 0;
+	height:30px; /* PlayCellSize ( but we need it specified here ) */
+}
+.sud_cell {
+	width:30px; /* PlayCellSize */
+	height:27px; /* PlayCellSize+2 minus padding */
+	padding-top:5px; /* total Height includes padding. vertical-align=middle does not seem to work here */
+	font-weight: bold;
+	font-size: 18px;
+}
+
+@media screen and (max-width: 420px) {
+	.sudokugame {
+		margin: 10px;
+		padding: 5px;
+	}
+	.sud_cellholdcandidates {
+		font-weight: bold;
+		font-size: 0.4em;
+		padding-top: 0;
+		height:20px; /* PlayCellSize ( but we need it specified here ) */
+	}
+	.sud_cell {
+		width:20px; /* PlayCellSize */
+		height:17px; /* PlayCellSize + 2 minus padding */
+		padding-top:7px; /* total Height includes padding. vertical-align=middle does not seem to work here */
+		font-weight: bold;
+		font-size: 9px;
+	}
+}
+
+
+/* About the gridlines: we only draw top and left lines. Bottom and right line come from adjecent cells */
+.sud_playfield {
+    font-family: verdana, arial, sans-serif;
+	float: left;
+	border-collapse: collapse;
+	background: white;
+	color: #003145;
+	padding: 0;
+	margin: 5px;
+	border-color: red;
+	border-right: 2px solid;
+	border-bottom: 2px solid;
+}
+
+.sud_block {
+	float:left;
+	border-top: 1px solid;
+	border-left: 1px solid;
+	padding:0;
+}
+.sud_thicktop {
+	border-top: 2px solid;
+}
+.sud_thickleft {
+	border-left: 2px solid;
+}
+
+.sud_clearfix {
+	clear: left;
+}
+
+.sud_cell {
+	border:2px solid #ffffff; /* White, because of sizing. Hints may coulour them red */
+	text-align:center;
+	padding:0;
+	font-weight: bold;
+}
+
+.sudokugame .sud_cellhint {
+	border-color: #00A1DE;
+	border-style: dotted;
+}
+.sud_cellwrongvalue {
+	/* erronuous value, duplicate value or alphanumeric or something */
+	border-color: #FF0000;
+}
+.sud_cellsolved {
+	border-color: #4fb3e3;
+	border-style: solid;
+	background: #4fb3e3;
+}
+.sud_cellprefilled { /* More specificity then cellsolved */
+	color: white;
+	background: #DF7426;
+	border-color: #DF7426;
+}
+.sud_cellactive {
+	background: #4fb3e3;
+}
+
+
+ /* remove list bullets from command butons */
+.sud_actions {
+	list-style-type: none;
+	float:left;
+	margin: 0 0 0 10px;
+	padding-left: 0;
+}
+
+.sud_actions li {
+	margin-top: 5px;
+}
+
+.sud_messages {
+	clear:both;
+}
+
+.sud_story {
+	clear:both;
+	background:  white;
+	color: #000066;
+	font-size: 14px;
+	margin: 10px ;
+	padding: 20px 10px 10px 10px;
+}
+
+.sud_story .bookname {
+    font-style: italic;
+}
+
+.arrow_down {
+	float:left;
+	width: 0;
+	height: 0;
+	margin-top: 4px;
+	border-left: 0.4em solid transparent;
+	border-right: 0.4em solid transparent;
+	border-top: 0.6em solid #003145;
+}
+
+.arrow_right {
+	float:left;
+	width: 0;
+	height: 0;
+	margin-top: 4px;
+	border-top: 0.4em solid transparent;
+	border-bottom: 0.4em solid transparent;
+	border-left: 0.6em solid #003145;
+}
